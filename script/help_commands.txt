@@ -1,0 +1,29 @@
+*******HELP FILE*******
+-> :tabe % open the current buffer in a new tab
+-> :vsplit split the current buf vertically
+-> :split split the current tab horizontally
+-> :tabnew filename open the file in a new tab
+-> /name find the name of the variable in a file
+-> /+Ctrl+f show the search history
+-> :FZF search quickly for a file (you can push F5 as well)
+-> gd or gD you search for a variable under the cursor
+-> gf open the file under the cursor
+-> t open file in a new tab
+-> i open file in a horizontal split window
+-> s open file in a vertical split window
+-> tabdo Deleteswaps delete all the swap files related to the current buffer
+-> tabe % open the current file in a new tab
+-> ,q close the current buffer but not the window
+-> :vsplit | buffer bufnum open an existing buffer in a new split window
+-> Ctrl+l create tags
+-> Ctrl + left/right arrow switch between tabs
+-> Ctrl+c Ctrl+c comment everything selected
+-> Ctrl+u Ctrl+u uncomment everything selected
+-> Esc Esc save the file
+-> F1 Repeat the last command
+-> F2 ls e for finding a file
+-> F4 make
+-> F5 FZF for quickly find a file
+-> F6 show nerd tree
+-> F8 reload .vimrc
+-> F12 show helecho tabpagewinnr(~/.vim/help_commands.txt)
