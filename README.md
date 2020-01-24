@@ -23,9 +23,9 @@ Do not forget to do above procedure each time you add new libraries to your CMak
 
 ## Launch vim
 Go to main folder of your project and launch vim:
-* ```vim .```;
-* press Ctrl+l for generating the ctags;
-* press F8 for reloading the .vimrc file.
+* ```vim .```
+* press Ctrl+l for generating the ctags
+* press F8 for reloading the .vimrc file
 
 Now your vim environment works perfectly with auto-complete activated.
 
