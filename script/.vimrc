@@ -184,17 +184,3 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_scope_highlight = 1
 
-
-"tips
-":tabe % open the current buffer in a new tab
-":vsplit split the current buf vertically
-":split split the current tab horizontally
-":tabnew filename open the file in a new tab
-"/name find the name of the variable in a file
-"/+Ctrl+f show the search history
-":FZF search quickly for a file (you can push F5 as well)
-"in visual mode if you do gd or gD you search for a variable under the cursor
-"t open file in a new tab
-"i open file in a horizontal split window
-"s open file in a vertical split window
-
