@@ -6,7 +6,7 @@ pyv="${pyv::3}"
 sudo apt-get install -y python"$pyv"-dev
 cd
 echo "Installing Vim && Dependencies..."
-#sudo add-apt-repository ppa:jonathonf/vim && sudo update
+sudo add-apt-repository ppa:jonathonf/vim && sudo update
 sudo apt-get install -y vim git clang-8 libclang1-8 libclang-dev curl cmake exuberant-ctags python"$pyv"-dev
 echo "..vim installed"
 
