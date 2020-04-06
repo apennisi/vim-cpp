@@ -14,6 +14,7 @@ echo "Install Plugins.."
 cd ~/.vim
 mkdir bundle
 cd bundle
+git clone --depth=1 https://github.com/vim-syntastic/syntastic.git
 git clone https://github.com/ycm-core/YouCompleteMe
 cd YouCompleteMe
 git submodule update --init --recursive
