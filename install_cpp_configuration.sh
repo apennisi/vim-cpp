@@ -17,8 +17,14 @@ cd bundle
 git clone --depth=1 https://github.com/vim-syntastic/syntastic.git
 git clone https://github.com/ycm-core/YouCompleteMe
 cd YouCompleteMe
+git remote add pm https://github.com/puremourning/YouCompleteMe
+git fetch pm
+git checkout signature-help
+git submodule sync --recursive
 git submodule update --init --recursive
-python3 install.py --clang-completer
+./install.py --clangd-completer
+#git submodule update --init --recursive
+#python3 install.py --clang-completer
 
 cd ~/.vim
 mkdir autoload
