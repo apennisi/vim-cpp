@@ -34,7 +34,7 @@ cd "$current_dir"
 sed -i 's/"colorscheme dracula/colorscheme dracula/g' ~/.vimrc
 cp script/help_commands.txt ~/.vim/
 cp script/.ycm_extra_conf.py ~/.vim/
-cp script/cpp.snippets ~/.vim/plugged/vim-snippets/UltiSnips/
+#cp script/cpp.snippets ~/.vim/plugged/vim-snippets/UltiSnips/
 echo "..Files Copied"
 
 
