@@ -122,6 +122,9 @@ highlight ColorColumn ctermbg=darkgray
 " indent for special file
 autocmd FileType c,cpp,h,hpp setlocal expandtab shiftwidth=2 softtabstop=2 cindent 
 
+" open nerd tree in each tab
+autocmd BufWinEnter * NERDTreeMirror
+
 let &path.="/usr/local/include/AL,/usr/include/AL,"
 set includeexpr=substitute(v:fname,'\\.','/','g')
 
