@@ -1,16 +1,15 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-" plugin for syntax
-Plug 'scrooloose/syntastic'
-
 "plugin for file explorer
 Plug 'preservim/nerdtree'
+
+Plug '907th/vim-auto-save'
 
 "plugin for color scheme c++
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -21,18 +20,29 @@ Plug 'vhdirk/vim-cmake'
 "plugin colorscheme
 Plug 'dracula/vim', { 'name': 'dracula' }
 
+Plug 'vim-airline/vim-airline'
+Plug 'ctrlpvim/ctrlp.vim'
+
+Plug 'majutsushi/tagbar'
+Plug 'Yggdroot/indentLine'
+
+"Plug 'https://github.com/vim-syntastic/syntastic'
+
 " Initialize plugin system
 call plug#end()
 
 
 "set plugins
 set rtp+=~/.vim/bundle/YouCompleteMe/
+set rtp+=~/.vim/bundle/syntastic/
 
 "map the leader
 let mapleader=","
 
 "mapping buttons
+""Create tags with Ctrl+l
 map <C-L> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.git,build,bin .<CR><CR>
+
 map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 function! OpenOther()
     if expand("%:e") == "cpp"
@@ -84,12 +94,14 @@ imap <C-z> <Esc>ui
 
 "set random stuff
 syntax on
-"colorscheme dracula
+colorscheme dracula
 set exrc
 set secure
 set tabstop=2
 set softtabstop=2
-set shiftwidth=4
+set shiftwidth=2
+set expandtab
+set autoindent
 set noexpandtab
 set colorcolumn=120
 set splitright
@@ -103,6 +115,9 @@ set confirm
 set switchbuf=useopen,usetab,newtab
 filetype plugin on
 highlight ColorColumn ctermbg=darkgray
+
+" indent for special file
+autocmd FileType c,cpp,h,hpp setlocal expandtab shiftwidth=2 softtabstop=2 cindent 
 
 let &path.="/usr/local/include/AL,/usr/include/AL,"
 set includeexpr=substitute(v:fname,'\\.','/','g')
@@ -118,9 +133,46 @@ autocmd BufWinEnter *.* silent loadview
 "save the file while you are changing it
 autocmd TextChanged,TextChangedI <buffer> silent write
 
+let g:auto_save = 1  " enable AutoSave on Vim startup
+let g:auto_save_silent = 1  " do not display the auto-save notification
+let g:auto_save_events = ["InsertLeave", "TextChanged"]
+let g:auto_save_write_all_buffers = 1  " write all open buffers as if you would use :wa
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
+let g:ycm_key_list_stop_completion = [ '<C-y>', '<Enter>' ]
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+let g:ycm_complete_in_comments = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_semantic_triggers =  {
+  \ 'c' : ['re!\w{2}'],
+  \ 'cpp' : ['re!\w{2}'],
+  \ 'python' : ['re!\w{2}'],
+  \ }
+
+" setup for syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['flake8']
+
+
+" setup for ctrlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
 
 "open/close the command help
 function! s:helpfile()
@@ -183,4 +235,3 @@ let g:cpp_experimental_simple_template_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_scope_highlight = 1
-
