@@ -71,6 +71,9 @@ map <Esc><Esc> :w<CR>
 :vnoremap <C-c><C-c> :norm i//<Cr>
 :vnoremap <C-u><C-u> :s/\/\///g<Cr>:noh<Cr>
 
+"set copy to clipboard
+set clipboard=unnamedplus
+
 " shift+arrow selection
 nmap <S-Up> v<Up>
 nmap <S-Down> v<Down>
